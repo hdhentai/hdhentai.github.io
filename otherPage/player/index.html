@@ -3,6 +3,8 @@
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<base href="./" />
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 	<title>TEST</title>
 	<style type="text/css">
 		* {
@@ -15,10 +17,10 @@
 			var img_BGImg = document.getElementById("BGImg");
 			img_BGImg.style.height = 'auto';
 			img_BGImg.style.width = document.documentElement.clientWidth + 'px';
-		//	alert(img_BGImg.style.height);
-		//	alert(img_BGImg.offsetHeight);
-		//	alert(document.documentElement.clientHeight);
-			if( img_BGImg.offsetHeight < document.documentElement.clientHeight ) {
+			//	alert(img_BGImg.style.height);
+			//	alert(img_BGImg.offsetHeight);
+			//	alert(document.documentElement.clientHeight);
+			if (img_BGImg.offsetHeight < document.documentElement.clientHeight) {
 				img_BGImg.style.width = 'auto';
 				img_BGImg.style.height = document.documentElement.clientHeight + 'px';
 			}

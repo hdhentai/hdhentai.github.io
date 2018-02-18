@@ -47,7 +47,7 @@ window.onload = function () {
 			return function () {
 				n_bannerli_now = ii;
 				console.log(ii);
-				window.location.href = '#' + div_content_bindBannerElements[ii].id;
+				window.location.href = window.location.href + '#' + div_content_bindBannerElements[ii].id;
 				//如果被banner覆蓋則向下滑動60空出banner位置
 				if (div_content_bindBannerElements[ii].getBoundingClientRect().top < 59) {
 					//pageXOffset與pageYOffset為scrollX與scrollY的別名，為了兼容IE用前兩個
