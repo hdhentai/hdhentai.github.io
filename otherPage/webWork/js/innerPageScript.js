@@ -49,9 +49,13 @@ window.onload = function () {
 				console.log(ii);
 				//获取当前文档名
 				var currentURL = window.location.href;
+				console.log('currentURL:' + currentURL);
 				var targetURL = currentURL;
+				console.log('targetURL:' + targetURL);
 				var currentDocName = currentURL.substring(currentURL.lastIndexOf('/') + 1);
+				console.log('currentDocName:' + currentDocName);
 				var jingIndex = currentDocName.indexOf('#');
+				console.log('jingIndex:' + jingIndex);
 				if (jingIndex != -1) {
 					targetURL = currentURL.substring(0, jingIndex);
 				}
