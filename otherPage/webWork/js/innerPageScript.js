@@ -55,7 +55,7 @@ window.onload = function () {
 				var currentDocName = currentURL.substring(currentURL.lastIndexOf('/') + 1);
 				console.log('currentDocName:' + currentDocName);
 				var jingIndex = currentDocName.indexOf('#');
-				console.log('jingIndex:' + jingIndex);
+				alert(jingIndex);
 				if (jingIndex != -1) {
 					targetURL = currentURL.substring(0, jingIndex);
 				}
