@@ -49,15 +49,11 @@ window.onload = function () {
 				console.log(ii);
 				//获取当前文档名
 				var currentURL = window.location.href;
-				console.log('currentURL:' + currentURL);
 				var targetURL = currentURL;
-				console.log('targetURL:' + targetURL);
 				var currentDocName = currentURL.substring(currentURL.lastIndexOf('/') + 1);
-				console.log('currentDocName:' + currentDocName);
 				var jingIndex = currentDocName.indexOf('#');
-				alert(jingIndex);
 				if (jingIndex != -1) {
-					targetURL = currentURL.substring(0, jingIndex);
+					targetURL = currentURL.substring(0, currentURL.lastIndexOf('#'));
 				}
 				console.log('targetURL:' + targetURL);
 				window.location.href = targetURL + '#' + div_content_bindBannerElements[ii].id;
