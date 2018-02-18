@@ -1,0 +1,190 @@
+/*本頁為index頁面樣式表*/
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.class_base_div {
+	/*全屏底層*/
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	overflow: visible;
+}
+
+
+/*背景底層******************************************************************************
+層疊級別16~32*/
+
+#index_background_div {
+	z-index: 16;
+}
+
+.class_bgimg_img {
+	min-width: 100%;
+	min-height: 100%;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+#bgimg_img {
+	z-index: 18;
+	opacity: 1;
+}
+
+#bgimg_next_img {
+	z-index: 17;
+	opacity: 1;
+}
+
+
+/********************************************************************************/
+
+#index_blackbase_div {
+	z-index: 30;
+	opacity: 0;
+	background-color: #000;
+}
+
+
+/*內容底層******************************************************************************
+層疊級別32~48*/
+
+#index_div {
+	z-index: 32;
+}
+
+.class_index_menu_div {
+	/*同步列表li的寬度*/
+	width: 200px;
+	height: 36px;
+	position: absolute;
+	top: 32px;
+	left: 36px;
+	overflow: hidden;
+	;
+	border: 2px solid snow;
+	border-radius: 8px;
+}
+
+#index_menu_bg_div {
+	z-index: 38;
+	opacity: 0.2;
+	background-color: snow;
+}
+
+#index_menu_div {
+	z-index: 40;
+	opacity: 0.3;
+}
+
+#index_menu_div>ul>li>div {
+	/*主列表項內div*/
+	width: 200px;
+	line-height: 36px;
+	cursor: pointer;
+	;
+	text-align: center;
+	font-size: 24px;
+	font-family: 微软雅黑;
+	color: snow;
+	text-shadow: 2px 2px 2px #000;
+	/*注意寬度同時設置到外部層上*/
+}
+
+
+/*Tips*/
+
+#index_tips_div {
+	width: 256px;
+	height: 106px;
+	top: 180px;
+	left: 238px;
+	cursor: pointer;
+	;
+	text-align: center;
+	font-size: 18px;
+	font-family: 微软雅黑;
+	color: snow;
+	text-shadow: 2px 4px 4px #000;
+	;
+	z-index: 42;
+	opacity: 0;
+	display: none;
+}
+
+#index_tips_bg_div {
+	width: 256px;
+	height: 256px;
+	position: absolute;
+	z-index: -8;
+	top: 0px;
+	;
+	opacity: 0.5;
+	background-color: snow;
+}
+
+
+/*imgTabs*/
+
+#index_imgtab_div {
+	height: 24px;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	z-index: 44;
+	opacity: 0.5;
+}
+
+#index_imgtab_ul li {
+	width: 32px;
+	height: 24px;
+	float: left;
+}
+
+#index_imgtab_ul>li>div {
+	width: 32px;
+	height: 16px;
+	text-align: center;
+	opacity: 0.5;
+	background-color: snow;
+	border-radius: 8px;
+}
+
+
+/*iframe*/
+
+#index_iframe_div {
+	width: 1000px;
+	height: 600px;
+	;
+	top: 32px;
+	left: 240px;
+	;
+	z-index: 46;
+	display: none;
+}
+
+#index_iframe {
+	width: 100%;
+	height: 100%;
+	;
+	border: 0px;
+}
+
+
+/*左下角動態圖*/
+
+#index_BGleftbottom__div {
+	width: 256px;
+	position: absolute;
+	left: -256px;
+	bottom: 0px;
+	z-index: 36;
+}
+
+#left_bottom_jump_img {
+	width: 100%;
+}

@@ -1,0 +1,203 @@
+/*本次作业的css样式表文件*/
+
+/*全局指定的参数*/
+*{
+	padding: 1px;/*内边距全默认为1px，margin异常越界导致间隙*/
+	margin: 0px;
+}
+
+/*三段式布局*/
+#top {
+	position: relative;/*relative生成相对定位的元素，相对于其正常位置进行定位。*/
+	margin-top: 1%;
+	margin-left: 6%;
+	margin-right: 6%;
+	;
+	height: 84px;
+	min-width: 990px;/*logo + heading = 700 + 290 = 990*/
+	;
+	/*background-color: #FFFFBB;*/
+	/*border: 1px solid #f00;*/
+}
+	/*top内布局*/
+		/*logo=290*83*/
+	#top #top-logo {
+		float: left;
+		;
+		width: 290px;
+		height: 83px;
+	}
+		/*主标题660*50*/
+	#top #top-heading {
+		float: right;
+		position: absolute;/*absolute生成绝对定位元素，相对第一个非static父元素定位,通过 "left", "top", "right" 以及 "bottom"定位。*/
+		top: 50%;/*垂直定位*/
+		margin-top: -25px;
+		left: 100%;/*水平定位*/
+		margin-left: -700px;
+		;
+		width: 700px;
+		height: 50px;
+		;
+		font-family: "黑体";
+		font-weight: bolder;
+		color: #444444;
+		font-size: 50px;
+		letter-spacing: 10px;
+	}
+
+#content {
+	position: relative;
+	margin-top: 0.5%;
+	margin-left: 6%;
+	margin-right: 6%;
+	;
+	height: auto;
+	min-height: 768px;
+	min-width: 990px;
+	;
+	/*background-color: #8DEEEE;*/
+	/*border: 1px solid #f00;*/
+}
+	/*content内布局*/
+		/*菜单*/
+	#content #menu {
+		position: relative;
+		;
+		height: 36px;
+		;
+		background-color: #2B7ACD;/*代替列表项背景色*/
+		/*border: 1px solid #f00;*/
+	}
+		#content #menu ul {
+			padding: 0px;
+			width: 100%;
+			list-style: none;
+		}
+			#content #menu ul li {
+				float: left;
+				width: 90px;
+				height: 36px;
+				line-height: 32px;
+				;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				color: #FFFFFF;
+				/*background-color: #2B7ACD;*/
+				border-right: 1px double #FFFFFF;
+			}
+		/*ascii图片*/
+	#content #pic-ascii {
+		float: left;
+		position: relative;
+		margin-top: -16px;
+		;
+		width: 69%;
+		;
+		/*background-color: #f00;*/
+	}
+		/*字母表图片*/
+	#content #pic-letters {
+		float: left;
+		position: relative;
+		margin-top: 0.1%;
+		;
+		width: 69%;
+		;
+		/*background-color: yellow;*/
+	}
+		/*相关信息*/
+	#content #cr {
+		float: right;
+		position: relative;
+		margin-top: -14px;
+		;
+		width: 30%;
+		;
+		background-color: #ECF2F5;
+		border: 1px double #000080;
+	}
+		#content #cr #crtitle {
+			float: left;
+			position: relative;
+			margin: 3%;
+			;
+			font-size: 16px;
+			font-weight: bold;
+			color: #000000;
+			;
+			/*background-color: #000080;*/
+		}
+			/*相关信息列表*/
+		#content #cr #crlist {
+			float: right;
+			position: relative;
+			margin-top: 0px;
+			;
+			width: 90%;
+			height: 768px;
+			overflow: auto;
+			;
+			background-color: #FFFFFF;
+			border: 1px double #000080;
+		}
+			#content #cr #crlist ul {
+				list-style: none;
+			}
+			#content #cr #crlist ul li {
+				border-bottom:1px dotted #000;
+			}
+
+#footer {
+	margin-top: 0.5%;
+	margin-left: 6%;
+	margin-right: 6%;
+	margin-bottom: 1%;
+	;
+	height: auto;
+	min-width: 990px;
+	;
+	color: #960096;
+	;
+	/*background-color: #8E388E;*/
+	/*border: 1px solid #f00;*/
+}
+
+/*悬浮层示例*/
+#nav-left {
+	position: fixed;
+	width: 3%;
+	min-width: 16px;
+	height: 32px;
+	;
+	top: 50%;/*垂直定位*/
+	margin-top: -50px;
+	left: 1.5%;/*水平定位*/
+	;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	;
+	z-index: 999;
+	/*border: 1px solid #f00;*/
+	background-color: #FFFF66;
+}
+#nav-right {
+	position: fixed;
+	width: 3%;
+	min-width: 16px;
+	height: 32px;
+	;
+	top: 50%;/*垂直定位*/
+	margin-top: -50px;
+	right: 1.5%;/*水平定位*/
+	;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	;
+	z-index: 999;
+	/*border: 1px solid #f00;*/
+	background-color: #FFFF66;
+}

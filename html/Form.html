@@ -1,0 +1,101 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Form EG</title>
+
+	<style type="text/css">
+		.h-bt {
+			color: darkblue;
+			font-family: 黑体;
+			font-weight: bold;
+			text-align: center;
+			letter-spacing: 10px;
+		}
+		
+		.p1 {
+			color: black;
+			font-family: 宋体;
+			text-align: center;
+		}
+		
+		.iMax {
+			height: 100%;
+			width: 100%;
+			text-align: center;
+		}
+		
+		td {
+			text-align: center;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function jumpMsg() {
+			alert("跳转到首页");
+			location.href = "../index.html";
+		}
+	</script>
+</head>
+
+<body bgcolor="#FFFFE0">
+	<h1 class="h-bt">这是一个简单的表单实例</h1>
+	<hr />
+	<p class="p1">如下表：</p>
+
+	<form name="testForm" action="" method="">
+		<table border="0" align="center" bgcolor="#E0E0E0" height="60%" width="40%">
+			<tr>
+				<th colspan="3" bgcolor="#ABCDEF">信息表单</th>
+			</tr>
+			<tr>
+				<td width="10%" rowspan="6" bgcolor="#98FB98">
+					<div align="center">填<br />写<br />信<br />息</div>
+				</td>
+				<td width="30%" bgcolor="#FFFF66">用户名:</td>
+				<td width="60%" bgcolor="#FFCCCC"><input class="iMax" type="text" name="username" value=""></td>
+			</tr>
+			<tr>
+				<td width="30%" bgcolor="#FFFF66">密码:</td>
+				<td width="60%" bgcolor="#FFCCCC"><input class="iMax" type="password" name="userpwd" value=""></td>
+			</tr>
+			<tr>
+				<td width="30%" bgcolor="#FFFF66">性别:</td>
+				<td width="60%" bgcolor="#FFCCCC">
+					<input type="radio" name="sex" value="1">男 &nbsp;
+					<input type="radio" name="sex" value="0">女
+				</td>
+			</tr>
+			<tr>
+				<td width="30%" bgcolor="#FFFF66">爱好:</td>
+				<td width="60%" bgcolor="#FFCCCC">
+					<input type="checkbox" name="eat" value="1">吃饭 &nbsp;
+					<input type="checkbox" name="sleep" value="2">睡觉 &nbsp;
+					<input type="checkbox" name="ft" value="3">*桐比
+				</td>
+			</tr>
+			<tr>
+				<td width="30%" bgcolor="#FFFF66">特长:</td>
+				<td width="60%" bgcolor="#FFCCCC">
+					<select name="特长" style="width: 100%;height: 100%">
+						<option value="1">头发</option>
+						<option value="2">手指</option>
+						<option value="3">**</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%" bgcolor="#FFFF66">个人简介:</td>
+				<td width="60%" height="25%" bgcolor="#FFCCCC"><textarea style="width: 100%;height: 100%"></textarea></td>
+			</tr>
+			<tr>
+				<td width="30%" colspan="3" bgcolor="#ABCDEF">
+					<input type="button" name="ok" value="完成" onclick="jumpMsg()"> &nbsp; &nbsp; &nbsp;
+					<input type="reset" name="clean" value="重置">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>

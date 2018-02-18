@@ -1,0 +1,148 @@
+/*內容頁面css樣式表*/
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#banner_div {
+	width: 100%;
+	/*注意同步li中line-height與font-size*/
+	height: 48px;
+	position: fixed;
+	background-color: #f25d8e;
+	box-shadow: 4px 2px 4px 2px #333;
+}
+
+#banner_seat_div {
+	width: 100%;
+	height: 48px;
+}
+
+
+/*banner列表項*/
+
+.class_banner_li_div {
+	width: 96px;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	;
+	text-align: center;
+	font-family: 微软雅黑;
+	font-size: 18px;
+	line-height: 46px;
+	color: snow;
+	;
+	cursor: pointer;
+}
+
+#banner_bgli_div {
+	width: 128px;
+	background-color: #fd83ab;
+}
+
+#banner_firstli_div {
+	width: 128px;
+	font-size: 24px;
+}
+
+
+/*Tips懸浮層*/
+
+#tips_div {
+	width: 148px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
+
+
+/*內容底層*/
+
+#content_base_div {
+	/*最小寬度應等於內圖片大小*/
+	min-width: 512px;
+	min-height: 1px;
+	margin-top: 12px;
+	margin-top: 0px;
+	margin-left: 12px;
+	margin-left: 0px;
+	margin-right: 168px;
+	padding: 1px;
+}
+
+.class_content_childtitle_div {
+	/*width*/
+	margin: 12px 4px;
+	height: 48px;
+	;
+	text-align: center;
+	font-family: 隶书;
+	font-size: 30px;
+	line-height: 46px;
+	color: snow;
+	;
+	background-color: #00a1d6;
+	box-shadow: 1px 2px 2px 2px #333;
+}
+
+.class_content_child_div {
+	margin: 10px 16px 8px 16px;
+	padding: 4px;
+	;
+	text-indent: 2em;
+	font-family: 宋体;
+	font-size: 18px;
+	line-height: 24px;
+	;
+	box-shadow: 1px 2px 2px 2px #333;
+	background-color: snow;
+}
+
+.class_content_childimg_img {
+	/*寬度取決於高度*/
+	max-width: 99%;
+	/*高度定義于圖片處*/
+	float: left;
+	margin: 4px 8px 0px 4px;
+	;
+	box-shadow: 1px 1px 1px 1px #333;
+}
+
+
+/*底部footer*/
+
+#footer {
+	width: 100%;
+	height: 64px;
+	margin-top: 2px;
+	;
+	text-align: center;
+	font-size: 16px;
+	line-height: 32px;
+	;
+	background-color: #f25d8e;
+}
+
+
+/*圖片預覽*/
+
+#viewpic_div {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	;
+	opacity: 0.5;
+	background-color: #000;
+	display: none;
+}
+
+#viewpic_img {
+	max-width: 90%;
+	max-height: 90%;
+	position: fixed;
+	display: none;
+}

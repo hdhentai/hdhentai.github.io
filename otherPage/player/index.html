@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>TEST</title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+	</style>
+	<script type="text/javascript">
+		function setBGImgSize() {
+			var img_BGImg = document.getElementById("BGImg");
+			img_BGImg.style.height = 'auto';
+			img_BGImg.style.width = document.documentElement.clientWidth + 'px';
+		//	alert(img_BGImg.style.height);
+		//	alert(img_BGImg.offsetHeight);
+		//	alert(document.documentElement.clientHeight);
+			if( img_BGImg.offsetHeight < document.documentElement.clientHeight ) {
+				img_BGImg.style.width = 'auto';
+				img_BGImg.style.height = document.documentElement.clientHeight + 'px';
+			}
+		}
+		window.onload = function () {
+			setBGImgSize();
+		}
+		window.onresize = function () {
+			setBGImgSize();
+		}
+	</script>
+</head>
+
+<body>
+	<img id="BGImg" src="BET.jpg" style="position: fixed;top: 0px;right: 0px;" />
+	<audio controls="controls" autoplay="autoplay" loop="loop" src="PneumaticTokyo_EnV.mp3" style="position: fixed;bottom: 0px;left: 0px;opacity: 0.75">
+	</audio>
+</body>
+
+</html>
