@@ -19,7 +19,7 @@
 		<script>
 			document.getElementById("query").onclick = function () {
 				var input_stuID = document.getElementById("stuID");
-				if (input_stuID.value.trim() == "") {
+				if (input_stuID.value == "") {
 					alert("学号不能为空！");
 				} else {
 					window.location.href = "./scoreList.html?stuID=" + input_stuID.value;
