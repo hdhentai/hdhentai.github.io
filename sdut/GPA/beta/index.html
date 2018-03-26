@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>SDUT GPA Query</title>
+</head>
+
+<body>
+	<div style="text-align: center;margin-top: 128px;">
+		<span style="font-size: 36px;text-shadow: 1px 1px 1px #888;">学号</span>
+		<br />
+		<br />
+		<input type="text" id="stuID" style="text-align: center;font-size: 24px;box-shadow: 4px 4px 4px #888;" />
+		<br />
+		<br />
+		<br />
+		<input type="button" id="query" value="查询" style="font-size: 20px;box-shadow: 4px 4px 4px #888;" />
+		<script>
+			document.getElementById("query").onclick = function () {
+				var input_stuID = document.getElementById("stuID");
+				if (input_stuID.value.trim() == "") {
+					alert("学号不能为空！");
+				} else {
+					window.location.href = "./scoreList.html?stuID=" + input_stuID.value;
+				}
+			}
+		</script>
+	</div>
+</body>
+
+</html>

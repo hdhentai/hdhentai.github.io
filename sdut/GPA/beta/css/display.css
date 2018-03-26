@@ -1,0 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#scoreTable th {
+    background-color: #ccc;
+    color: #000;
+}
+
+#scoreTable tr {
+    background-color: #eee;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    color: #666;
+}
+
+#scoreTable .effectiveTr{
+    background-color: #9af99d;
+    color: #000;
+}
+
+#scoreTable .redWarningTr{
+    background-color: #f99a9e;
+    color: #000;
+}
+
+#scoreTable .yellowWarningTr{
+    background-color: #f8f99a;
+    color: #000;
+}
