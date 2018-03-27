@@ -237,6 +237,9 @@ window.onload = function () {
 		GPA = creditGPASum / creditSum;
 
 		console.log(creditSum + ":" + creditGPASum + ":" + GPA);
+		document.getElementById("creditGPASumTd").innerText = creditGPASum;
+		document.getElementById("creditSumTd").innerText = creditSum;
+		document.getElementById("GPATd").innerText = GPA;
 	}
 
 	//跨域回调函数
@@ -273,6 +276,7 @@ window.onload = function () {
 		alert("学号不见辣！");
 		window.location.href = "./index.html";
 	}
+	document.getElementById("stuIDTd").innerText = queryString_stuID;
 	// alert(queryString_stuID);
 	//开始跨域调用
 	jsonp_runScript("http://hen-tai.top:23333/SDUT.GPA/" + queryString_stuID + ".SDUTStudentScoreDataJSONString", "callBackFunction_GET_jsonData", "&stuID=" + queryString_stuID);

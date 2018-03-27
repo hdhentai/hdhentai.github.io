@@ -16,17 +16,17 @@
     color: #666;
 }
 
-#scoreTable .effectiveTr{
+#scoreTable .effectiveTr {
     background-color: #9af99d;
     color: #000;
 }
 
-#scoreTable .redWarningTr{
+#scoreTable .redWarningTr {
     background-color: #f99a9e;
     color: #000;
 }
 
-#scoreTable .yellowWarningTr{
+#scoreTable .yellowWarningTr {
     background-color: #f8f99a;
     color: #000;
 }
