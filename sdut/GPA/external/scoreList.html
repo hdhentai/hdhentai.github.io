@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<base href="./" />
+	<link rel="stylesheet" href="css/display.css" />
+	<script src="js/Map.lib.js"></script>
+	<script src="js/scoreList.js"></script>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<title>Score List</title>
+</head>
+
+<body>
+
+	<div id="stuInfoAndGPATableBaseDiv" style="position: fixed;top: 0px;left: 0px;width: 100%;height: 80px;background-color:#eee;box-shadow: 2px 2px 2px #000;z-index: 1000;">
+
+		<table border="1px" id="stuInfoAndGPATable" style="width: 100%;height: 100%;text-align: center;border-collapse: collapse;border: 1px solid #000;font-weight: bolder;">
+
+			<tbody id="stuInfoAndGPATbody">
+
+				<tr>
+					<td colspan="1">学号</td>
+					<td colspan="3" id="stuIDTd">23333333333</td>
+					<td colspan="1">姓名</td>
+					<td colspan="1" id="stuNameTd">23333333333</td>
+				</tr>
+
+				<tr>
+					<td>已修学分</td>
+					<td id="pointTd">233</td>
+					<td>应修总学分</td>
+					<td id="totalPointTd">233</td>
+					<td>平均绩点</td>
+					<td id="GPATd">233</td>
+				</tr>
+
+				<tr>
+
+					<td style="font-size: 13px;font-weight: normal;" colspan="6">
+						本页数据来源于外部API，遵循该API说明在此给出其&nbsp;
+						<span style="font-weight:bolder;">
+							<a target="_Blank" style="text-decoration: none" href="http://api.dogest.cn/grade/index.html">wiki页面的链接</a>
+						</span>
+						&nbsp;，如对数据有疑问请阅读其文档并反馈！
+					</td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+	<div id="stuInfoAndGPATableBaseSpaceDiv" style="width: 100%;height: 80px;background-color:#000;">
+
+	</div>
+
+	<div id="scoreTableBaseDiv">
+		<table id="scoreTable" style="width: 100%;">
+			<caption style="background-color: #eee;padding-top: 5px;padding-bottom: 3px;"><h3>本专业成绩列表</h3></caption>
+			<tbody id="scoreTableTbody">
+				<tr>
+					<th scope="col" valign="middle" nowrap="" align="center">序号</th>
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">学年</th> -->
+					<th scope="col" valign="middle" nowrap="" align="center">学期</th>
+					<th scope="col" valign="middle" nowrap="" align="center">类别</th>
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">课程编号</th> -->
+					<th scope="col" valign="middle" nowrap="" align="center">课程名称</th>
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">学时</th> -->
+					<th scope="col" valign="middle" nowrap="" align="center">学分</th>
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">考核方式</th> -->
+					<!--
+							<th scope="col" align="center" valign="middle" nowrap>计分形式</th>
+							-->
+					<th scope="col" valign="middle" nowrap="" align="center">原考成绩</th>
+					<th scope="col" valign="middle" nowrap="" align="center">重学/补考成绩</th>
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">课程绩点</th> -->
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">学分绩点</th> -->
+					<!-- <th scope="col" valign="middle" nowrap="" align="center">教师</th> -->
+					<!--
+							<th scope="col" align="center" valign="middle" nowrap>头次</th>
+							-->
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
