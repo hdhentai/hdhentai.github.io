@@ -185,14 +185,11 @@ window.onload = function () {
 			} else {
 				var tempScoreS = Number(getEffectiveScoreS(tempScore));
 				map.set(courseName, convertDouble(examScoreS) > convertDouble(tempScoreS) ? score : tempScore);
-				console.log('set:' + courseName);
-				console.log(convertDouble(examScoreS) > convertDouble(tempScoreS) ? score : tempScore);
 			}
 		}
-		console.log(map.elements);
-		//兼容性好，有替代实现，替代下文
-		map.forEach(function (v, k) {
-			var score = v;
+
+		for (var kv of map) {
+			var score = kv[1];
 			if (score.type !== "公选课") {
 				if (Number(convertDouble(score.examScore)) < 60 && Number(convertDouble(score.reExamScore)) < 60) {
 					reView(score, "redWarningTr");
@@ -210,36 +207,11 @@ window.onload = function () {
 					reView(score, "");
 				}
 			}
-		});
-
-		//兼容性差，换用上文实现
-		// for (var kv of map) {
-		// 	var score = kv[1];
-		// 	if (score.type !== "公选课") {
-		// 		if (Number(convertDouble(score.examScore)) < 60 && Number(convertDouble(score.reExamScore)) < 60) {
-		// 			reView(score, "redWarningTr");
-		// 		} else {
-		// 			reView(score, "effectiveTr");
-		// 		}
-		// 		creditSum += convertDouble(score.credit);
-		// 		var examScoreS = Number(getEffectiveScoreS(score));
-		// 		var temp = convertDouble(examScoreS);
-		// 		creditGPASum += convertDouble(score.credit) * (temp >= 60 ? temp : 0);
-		// 	} else {
-		// 		if (Number(convertDouble(score.examScore)) < 60 && Number(convertDouble(score.reExamScore)) < 60) {
-		// 			reView(score, "yellowWarningTr");
-		// 		} else {
-		// 			reView(score, "");
-		// 		}
-		// 	}
-		// }
+		}
 
 		GPA = creditGPASum / creditSum;
 
 		console.log(creditSum + ":" + creditGPASum + ":" + GPA);
-		document.getElementById("creditGPASumTd").innerText = creditGPASum;
-		document.getElementById("creditSumTd").innerText = creditSum;
-		document.getElementById("GPATd").innerText = GPA;
 	}
 
 	//跨域回调函数
@@ -274,11 +246,10 @@ window.onload = function () {
 	}
 	if (queryString_stuID == null || queryString_stuID == undefined || queryString_stuID == "") {
 		alert("学号不见辣！");
-		window.location.href = "./index.html";
+		window.location.href = "http://127.0.0.1:8090/scoreList.html?stuID=15110572122";
 	}
-	document.getElementById("stuIDTd").innerText = queryString_stuID;
 	// alert(queryString_stuID);
 	//开始跨域调用
-	jsonp_runScript("http://hen-tai.top:23333/SDUT.GPA/" + queryString_stuID + ".SDUTStudentScoreDataJSONString", "callBackFunction_GET_jsonData", "&stuID=" + queryString_stuID);
+	jsonp_runScript("http://127.0.0.1:8080/SDUT.GPA/JsonServlet", "callBackFunction_GET_jsonData", "&stuID=" + queryString_stuID);
 
 }
