@@ -233,17 +233,40 @@ function processResponse(stuObj) {
  * @param {String} stuID 
  */
 function ajax_getStuDataJSON(stuID) {
-	var xhr = new XMLHttpRequest();
-	var url = "http://api.dogest.cn/grade/grade/query?id=" + stuID;
-	xhr.onreadystatechange = function (params) {
-		console.log("ajax : request status changed : " + xhr.readyState + " : " + xhr.status);
-		if (this.readyState == 4 && this.status == 200) {
+	var IEV = IEVersion();
+	console.log("Info : IEVersion : " + IEV);
+	if (IEV == 6 || IEV == 7) {
+		// don't support
+		alert("乃的浏览器是老古董啦！快换个现代浏览器叭qwq~");
+		console.log("Error : browser version so low.");
+		window.location.href = "./index.html";
+	} else if (IEV == 8 || IEV == 9) {
+		var xdr = new XDomainRequest();
+		var url = "http://api.dogest.cn/grade/grade/query?id=" + stuID;
+		xdr.onload = function (params) {
+			console.log("ajax : response onload.");
 			// call processResponse function
 			processResponse(JSON.parse(this.responseText));
 		}
+		xdr.onerror = function (params) {
+			alert("窝没有请求到数据的说\n刷新一下试试吧qwq");
+			console.log("ajax : xdr send request & xdr call onerror().");
+		}
+		xdr.open("GET", url);
+		xdr.send();
+	} else {
+		var xhr = new XMLHttpRequest();
+		var url = "http://api.dogest.cn/grade/grade/query?id=" + stuID;
+		xhr.onreadystatechange = function (params) {
+			console.log("ajax : request status changed : " + this.readyState + " : " + this.status);
+			if (this.readyState == 4 && this.status == 200) {
+				// call processResponse function
+				processResponse(JSON.parse(this.responseText));
+			}
+		}
+		xhr.open("GET", url, true);
+		xhr.send();
 	}
-	xhr.open("GET", url, true);
-	xhr.send();
 }
 
 window.onload = function (params) {
