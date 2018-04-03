@@ -3,7 +3,7 @@
  * 
  * author: MiK
  * 
- * version: 1.1
+ * version: 1.1.2
  */
 
 /**
@@ -158,7 +158,8 @@ function displayScoreList(scoreList) {
 				if (Number(convertNumber(v[i].score.origGrade)) > maxScoreS) {
 					maxScoreS = Number(convertNumber(v[i].score.origGrade));
 					maxScoreIndex = i;
-				} else if (Number(convertNumber(v[i].score.reGrade)) > maxScoreS) {
+				}
+				if (Number(convertNumber(v[i].score.reGrade)) > maxScoreS) {
 					maxScoreS = Number(convertNumber(v[i].score.reGrade));
 					maxScoreIndex = i;
 				}
