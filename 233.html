@@ -1,0 +1,59 @@
+<html>
+
+<head>
+
+<title>Hello,EveryOne!</title>
+
+<style>
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="zdy_div" style="width:100%;height:100%;z-index:1000;background-color:#fff;color:#000;">
+
+</div>
+
+<script>
+var flag = Number(1);
+var time_jg = Number(40);
+
+function toB() {
+  document.getElementById("zdy_div").style.backgroundColor = "#000";
+  document.getElementById("zdy_div").style.color = "#fff";
+  if(flag==1)
+    setTimeout(toW,time_jg);
+}
+function toW() {
+  document.getElementById("zdy_div").style.backgroundColor = "#fff";
+  document.getElementById("zdy_div").style.color = "#000";
+  if(flag==1)
+    setTimeout(toB,time_jg);
+}
+
+setTimeout(toB,time_jg);
+
+document.getElementById("zdy_div").onclick = function (params) {
+  if(flag==1)
+    flag = Number(0);
+  else{
+    flag = Number(1);
+	setTimeout(toB,time_jg);
+  }
+}
+
+let bool = new Boolean(false);
+console.log(bool);
+if(bool)
+	console.log("jia");
+</script>
+
+</body>
+
+</html>
