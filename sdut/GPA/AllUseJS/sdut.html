@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../lib/jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form id="form-reqDataToDataIF" method="POST" action="http://hen-tai.top/cjcx/zcjcx_list.php" target="dataIF">
+        <input type="hidden" name="post_xuehao" value="15110572122" />
+    </form>
+    <iframe id="if-data" name="dataIF" src="" frameborder="0"></iframe>
+</body>
+<script>
+    $('#form-reqDataToDataIF').submit();
+    document.domain = "hen-tai.top";
+    var data = $("#if-data").contents().find("body").html();
+    console.log(data);
+</script>
+
+</html> 
