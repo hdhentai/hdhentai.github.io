@@ -13,7 +13,7 @@
 
 <body>
 
-	<div id="stuInfoAndGPATableBaseDiv" style="position: fixed;top: 0px;left: 0px;width: 100%;height: 80px;background-color:#eee;box-shadow: 2px 2px 2px #000;z-index: 1000;">
+	<div id="stuInfoAndGPATableBaseDiv" style="position: fixed;top: 0px;left: 0px;width: 100%;height: 100px;background-color:#eee;box-shadow: 2px 2px 2px #000;z-index: 1000;">
 
 		<table border="1px" id="stuInfoAndGPATable" style="width: 100%;height: 100%;text-align: center;border-collapse: collapse;border: 1px solid #000;font-weight: bolder;">
 
@@ -34,9 +34,15 @@
 				</tr>
 
 				<tr>
+					<td colspan="6">
+						<button id="editScoreBtn" style="width: 100%;height: 100%;background-color:greenyellow;color:#000;font-weight: bolder;">点-击-此-处-自-定-义-成-绩</button>
+					</td>
+				</tr>
+
+				<tr>
 
 					<td style="font-size: 13px;font-weight: normal;" colspan="6">
-						本页尚处于测试阶段，对某些未知的课程成绩表示方法（例如：免修，一般...）进行分数折算时可能会出现错误，如果有问题请&nbsp;
+						本页暂不显示第二专业成绩，如果有问题请&nbsp;
 						<span style="font-weight:bolder;">
 							<a target="_Blank" style="text-decoration: none" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=XWRsaGVlZGhsah0sLHM_MjA">发送邮件告知问题和联系方式</a>
 						</span>
@@ -51,13 +57,13 @@
 
 	</div>
 
-	<div id="stuInfoAndGPATableBaseSpaceDiv" style="width: 100%;height: 80px;background-color:#000;">
+	<div id="stuInfoAndGPATableBaseSpaceDiv" style="width: 100%;height: 100px;background-color:#000;">
 
 	</div>
 
 	<div id="scoreTableBaseDiv">
 		<table id="scoreTable" style="width: 100%;">
-			<tbody id="scoreTableTbody">
+			<thead>
 				<tr>
 					<th scope="col" valign="middle" nowrap="" align="center">序号</th>
 					<th scope="col" valign="middle" nowrap="" align="center">学年</th>
@@ -80,10 +86,38 @@
 							<th scope="col" align="center" valign="middle" nowrap>头次</th>
 							-->
 				</tr>
-
+			</thead>
+			<tbody id="scoreTableTbody">
+				<tr>
+					<td colspan="14"></td>
+				</tr>
+				<tr>
+					<td colspan="14">
+						<h1>成绩信息加载中...请稍后...</h1>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="14"></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
+
+	<div id="editScoreJSONDiv" style="position: fixed;width: 100%;height: 100%;top: 0px;left: 0px;z-index: 9999;background-color: #000;display: none;">
+		<div id="exitEditDiv" style="width: 50%;height: 100%;position: absolute;left: 0px;color: #fff;font-size: 64px;text-align: center;">
+			<span style="color: orange;font-size: 48px;">
+				请在右侧按照格式至少
+				<br /> 添加或修改以下字段：
+				<br /> type（课程类型）
+				<br /> courseName（课程名）
+				<br /> credit字段（学分）
+				<br /> examScore（考试成绩）
+			</span>
+			<br /> 单击此黑色区域完成修改
+		</div>
+		<textarea name="json" id="cusData" style="width: 50%;height: 100%;position: absolute;right: 0px;"></textarea>
+	</div>
+
 </body>
 
 </html>
