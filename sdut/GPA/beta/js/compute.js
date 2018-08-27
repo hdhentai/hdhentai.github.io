@@ -301,6 +301,58 @@ window.onload = function () {
 		// document.getElementById("test").value = formatJSON;
 	}
 
+	document.getElementById('addScoreBtn').onclick = function (params) {
+		var addbg = document.getElementById('addScoreDiv');
+		addbg.style.display = '';
+		var addForm = document.getElementById('addScoreForm');
+		addForm.reset();
+	}
+
+	document.getElementById('addOKBtn').onclick = function (params) {
+		var lastScore = stuObject.scoreList[stuObject.scoreList.length - 1];
+		var cNm = '';
+		var cCrd = 0;
+		var cScore = 0;
+		try {
+			cNm = document.getElementById('courseName').value;
+			cCrd = parseFloat(document.getElementById('courseCredit').value);
+			cScore = document.getElementById('courseScore').value;
+			if (cNm == '' || cCrd <= 0 || cScore == '' || isNaN(cCrd)) {
+				throw new Error();
+			}
+		} catch (e) {
+			alert('输入有误！');
+			console.log(e);
+			document.getElementById('addCancelBtn').onclick();
+			return;
+		}
+		var cusScore = {
+			"orderNumber": String(parseInt(lastScore.orderNumber, 10) + 1),
+			"schoolYear": "*-*",
+			"schoolTerm": "*",
+			"type": "默认",
+			"courseNumber": "",
+			"courseName": cNm,
+			"classHour": "",
+			"credit": cCrd,
+			"examination": "",
+			"examScore": cScore,
+			"reExamScore": "",
+			"courseGPA": "",
+			"creditGPA": "",
+			"teacher": ""
+		};
+		console.log(cusScore);
+		stuObject.scoreList.push(cusScore);
+		computeGPA(stuObject);
+		document.getElementById('addCancelBtn').onclick();
+	}
+
+	document.getElementById('addCancelBtn').onclick = function (params) {
+		var addbg = document.getElementById('addScoreDiv');
+		addbg.style.display = 'none';
+	}
+
 	// 格式化JSON
 	// https://www.cnblogs.com/Sinhtml/p/8336930.html
 	function formatJson(json, options) {
