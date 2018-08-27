@@ -188,8 +188,8 @@ window.onload = function () {
 				return 0;
 			} else if ("取消" === str) {
 				return 0;
-			} else if ("免修" === str) { // 似乎应该是62才对
-				return 62;
+			} else if ("免修" === str) { // 安博给的计算中免修为70
+				return 70;
 			} else if ("优" === str) {
 				return 95;
 			} else if ("良" === str) {
