@@ -206,7 +206,7 @@ window.onload = function () {
 	function displayScoreData(stuObject) {
 
 		tbody_scoreTableTbody.innerHTML = '';
-		tbody_scoreTableTbody.innerText = '';
+		// tbody_scoreTableTbody.innerText = '';//chrome error not support
 
 		for (var i = 0; i < stuObject.scoreList.length; i++) {
 			var temptr = document.createElement("tr");
