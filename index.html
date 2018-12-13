@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>H</title>
+    <script src="js/JLinBlog.lib.js"></script>
+    <script src="js/LineObject.lib.js"></script>
     <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
         * {
             margin: 0px;
             padding: 0px;
@@ -30,42 +38,44 @@
         }
     </style>
     <script>
-        // global var
-        var spanCount = null;
-        var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
-            "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω";
+        var isSupportCanvas = canvasSupport();
+        console.log('isSupportCanvas : ' + isSupportCanvas);
 
-        window.onload = function onload(params) {
-            var div_fixedBG = document.getElementById('div-fixedBG');
-            var div_fixedBG_width = div_fixedBG.clientWidth;
-            var div_fixedBG_height = div_fixedBG.clientHeight;
-            spanCount = Number(0);
+        // 判断是否支持canvas
+        function canvasSupport() {
+            return !!document.createElement('canvas').getContext;
+        }
 
-            //判断访问终端
-            var browser = {
-                versions: function () {
-                    var u = navigator.userAgent,
-                        app = navigator.appVersion;
-                    return {
-                        trident: u.indexOf('Trident') > -1, //IE内核
-                        presto: u.indexOf('Presto') > -1, //opera内核
-                        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-                        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-                        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-                        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-                        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
-                        iPad: u.indexOf('iPad') > -1, //是否iPad
-                        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
-                    };
-                }(),
-                language: (navigator.browserLanguage || navigator.language).toLowerCase()
-            }
+        //判断访问终端
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
 
-            var countLimit = Number(456);
-            var timerSpace = Number(234);
-            var lineLength = Number(56);
+        var countLimit = Number(456);
+        var timerSpace = Number(234);
+        var lineLength = Number(56);
 
+        if (isSupportCanvas) {
+            countLimit = Number(-1);
+            timerSpace = Number(-1);
+            lineLength = Number(-1);
+        } else {
             if (browser.versions.mobile) {
                 console.log('switch:' + 'mobile');
                 countLimit = Number(234);
@@ -90,154 +100,66 @@
             console.log('countLimit:' + countLimit);
             console.log('timerSpace:' + timerSpace);
             console.log('lineLength:' + lineLength);
-
-            setInterval(function (params) {
-                if (spanCount <= countLimit) {
-                    var newLine = null;
-                    newLine = Line(div_fixedBG, lineLength);
-                    newLine.start();
-                }
-            }, timerSpace);
-
         }
 
-        function createE(params) {
-            var lspan = document.createElement('span');
-            lspan.innerText = chars.charAt(parseInt(Math.random() * chars.length, 10));
-            lspan.className = 'letterSpan';
-            lspan.style.opacity = 1.000;
-            return lspan;
+        var cvs;
+        var lines = [];
+        var timer_draw;
+        window.onload = function onload(params) {
+            var div_fixedBG = document.getElementById('div-fixedBG');
+            var div_fixedBG_width = div_fixedBG.clientWidth;
+            var div_fixedBG_height = div_fixedBG.clientHeight;
+            var cvs_bg = document.createElement('canvas');
+            cvs_bg.id = 'cvs-bg';
+            cvs_bg.innerText = '您的浏览器不支持Canvas，请联系博主告知该问题，谢谢！';
+            div_fixedBG.appendChild(cvs_bg);
+
+            if (isSupportCanvas) {
+                cvs = document.getElementById('cvs-bg');
+                resizeCanvas();
+                window.onresize = resizeCanvas;
+                timer_draw = setInterval(timingDraw, 40);
+            } else {
+                setInterval(function (params) {
+                    if (spanCount <= countLimit) {
+                        var newLine = null;
+                        newLine = Line(div_fixedBG, lineLength);
+                        newLine.start();
+                    }
+                }, timerSpace);
+            }
         }
 
-        function Line(parentE, maxSize) {
-            var oline = {
-                isLive: true,
-                parent: parentE,
-                maxsize: maxSize,
-                es: [],
-                start: function () {
-                    if (!this.isLive) {
-                        return;
-                    }
-                    var left = parseFloat(Math.random() * this.parent.clientWidth);
-                    var top = parseFloat(Math.random() * this.parent.clientHeight);
-                    top = 0;
-                    var lspan = createE();
-                    lspan.style.left = left + 'px';
-                    lspan.style.top = top + 'px';
-                    this.parent.appendChild(lspan);
-                    if (!this.isLive) {
-                        this.parent.innerHTML = '';
-                        spanCount = Number(0);
-                        this.es = [];
-                        return;
-                    }
-                    this.es.push(lspan);
-                    spanCount += 1;
-                    // document.title = spanCount;
-                    this.next();
-                },
-                next: function () {
-                    if (!this.isLive) {
-                        return;
-                    }
-                    var prevE = this.es[this.es.length - 1];
-                    // console.log(prevE);
-                    var top = parseFloat(prevE.style.top) + 14;
-                    if (top > this.parent.clientHeight) {
-                        this.clean();
-                        return;
-                    }
-                    var nspan = createE();
-                    nspan.style.left = prevE.style.left;
-                    nspan.style.top = top + 'px';
-                    this.parent.appendChild(nspan);
-                    if (!this.isLive) {
-                        this.parent.innerHTML = '';
-                        spanCount = Number(0);
-                        this.es = [];
-                        return;
-                    }
-                    if (this.es.length == this.maxsize) {
-                        try {
-                            this.parent.removeChild(this.es[0]);
-                        } catch (err) {
-                            console.log(err);
-                            // return;
-                        }
-                        this.es.shift();
-                        this.es.push(nspan);
-                        this.refresh();
-                    } else if (this.es.length > this.maxsize) {
-                        alert('error');
-                    } else {
-                        this.es.push(nspan);
-                        spanCount += 1;
-                        // document.title = spanCount;
-                        this.refresh();
-                    }
+        function resizeCanvas() {
+            var newWidth = getComputedStyle(cvs.parentNode).width;
+            var newHeight = getComputedStyle(cvs.parentNode).height;
+            console.log(newWidth + ' * ' + newHeight);
+            cvs.width = parseInt(newWidth, 10);
+            cvs.height = parseInt(newHeight, 10);
+        }
 
-                    var thisLine = this;
-                    setTimeout(function () {
-                        thisLine.next();
-                    }, 25);
-                },
-                clean: function () {
-                    if (!this.isLive) {
-                        return;
-                    }
-                    // console.log(parseFloat(this.es[0].style.opacity));
-                    try {
-                        this.parent.removeChild(this.es[0]);
-                    } catch (err) {
-                        console.log(err);
-                        // return;
-                    }
-                    this.es.shift();
-                    spanCount -= 1;
-                    // document.title = spanCount;
-                    if (this.es.length == 0) {
-                        return;
-                    }
-                    this.es[this.es.length - 1].style.opacity = this.es.length / this.maxsize;
-                    this.refresh();
-                    var thisLine = this;
-                    setTimeout(function () {
-                        thisLine.clean();
-                    }, 25);
-                },
-                refresh: function (params) {
-                    if (!this.isLive) {
-                        this.parent.innerHTML = '';
-                        spanCount = Number(0);
-                        this.es = [];
-                        return;
-                    }
-                    var allLetterSpan = this.parent.getElementsByClassName('letterSpan');
-                    if (allLetterSpan.length > 678) {
-                        this.isLive = false;
-                        this.parent.innerHTML = '';
-                        spanCount = Number(0);
-                        this.es = [];
-                        var thisLine = this;
-                        setTimeout(function () {
-                            thisLine.parent.innerHTML = '';
-                            spanCount = Number(0);
-                            thisLine.es = [];
-                        }, 999);
-                        return;
-                    }
-                    var change = 1000 / this.maxsize;
-                    // console.log(change);
-                    for (var i = this.es.length - 2; i >= 0; i--) {
-                        this.es[i].style.opacity = (parseFloat(this.es[i + 1].style.opacity) * 1000 -
-                            change) / 1000;
-                        // console.log(this.es[i]);
-                        // console.log(parseFloat(this.es[i].style.opacity));
-                    }
+        function timingDraw() {
+            while (lines.length > 0) {
+                // console.log(lines[0].headXY.y);
+                if (lines[0].headXY.y > (cvs.height + lines[0].len * (lines[0].charSize + lines[0].charSpace) - lines[0]
+                        .charSpace)) {
+                    lines.shift().destroy();
+                } else {
+                    break;
                 }
-            };
-            return oline;
+            }
+            if (lines.length < 48) {
+                if (Math.random() * 4 < 1) {
+                    var line = new LineObject(cvs);
+                    line.init();
+                    lines.push(line);
+                }
+            }
+            var ctx = cvs.getContext("2d");
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            for (var i = 0; i < lines.length; i++) {
+                lines[i].draw(ctx);
+            }
         }
     </script>
 </head>
